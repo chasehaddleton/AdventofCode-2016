@@ -34,13 +34,17 @@ public class dayOne {
         input.forEach((cur) -> { // run every command
             int dist = Integer.parseInt(cur.substring(1, cur.length())); // figure out how far we need to travel
             switch (facing.change(cur.substring(0, 1))) { // figure out the direction to travel
-                case Facing.north: pos.changeY(dist, (y, dis) -> (y + dis)); // move north
+                case Facing.north:
+                    pos.changeY(dist, (y, dis) -> (y + dis)); // move north
                     break;
-                case Facing.east: pos.changeX(dist, (x, dis) -> (x + dis)); // move east
+                case Facing.east:
+                    pos.changeX(dist, (x, dis) -> (x + dis)); // move east
                     break;
-                case Facing.south: pos.changeY(dist, (y, dis) -> (y - dis)); // move south
+                case Facing.south:
+                    pos.changeY(dist, (y, dis) -> (y - dis)); // move south
                     break;
-                case Facing.west: pos.changeX(dist, (x, dis) -> (x - dis)); // move west
+                case Facing.west:
+                    pos.changeX(dist, (x, dis) -> (x - dis)); // move west
                     break;
             }
         });
@@ -58,20 +62,24 @@ public class dayOne {
             facing.change(cur.substring(0, 1)); // find the new direction of travel
             for (int i = 0; i < Integer.parseInt(cur.substring(1, cur.length())); i++) { // travel one unit each time
                 switch (facing.direction()) {
-                    case Facing.north: pos.changeY(1, (y, dis) -> (y + dis)); // move north
+                    case Facing.north:
+                        pos.changeY(1, (y, dis) -> (y + dis)); // move north
                         break;
-                    case Facing.east: pos.changeX(1, (x, dis) -> (x + dis)); // move east
+                    case Facing.east:
+                        pos.changeX(1, (x, dis) -> (x + dis)); // move east
                         break;
-                    case Facing.south: pos.changeY(1, (y, dis) -> (y - dis)); // move south
+                    case Facing.south:
+                        pos.changeY(1, (y, dis) -> (y - dis)); // move south
                         break;
-                    case Facing.west: pos.changeX(1, (x, dis) -> (x - dis)); // west
+                    case Facing.west:
+                        pos.changeX(1, (x, dis) -> (x - dis)); // west
                         break;
                 }
 
                 int count;
 
-                if (visited.get(pos.toString()) == null) { // see if we've visited this place before
-                    count = -1;
+                if (visited.get(pos.toString()) == null) { // check if we've visited this place before
+                    count = -1; // we haven't!
                 } else {
                     return pos;
                 }
