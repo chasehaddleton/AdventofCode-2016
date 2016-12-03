@@ -41,11 +41,11 @@ public class dayTwo {
         StringBuilder out = new StringBuilder();
         KeyPadPos pos = new KeyPadPos();
 
-        for (String cur : input) {
+        for (String cur : input) { // determine each key press
             for (char ch : cur.toCharArray()) {
-                pos.move(ch);
+                pos.move(ch); // move for each command
             }
-            out.append(pos.toNum());
+            out.append(pos.toNum()); // add the final key to the output
         }
 
         return out.toString();
@@ -55,11 +55,11 @@ public class dayTwo {
         StringBuilder out = new StringBuilder();
         TrianglePadPos pos = new TrianglePadPos();
 
-        for (String cur : input) {
+        for (String cur : input) { // determine each key press
             for (char ch : cur.toCharArray()) {
-                pos.move(ch);
+                pos.move(ch); // move for each command
             }
-            out.append(pos.toKey());
+            out.append(pos.toKey()); // add the final key to output
         }
 
         return out.toString();
@@ -72,6 +72,7 @@ class TrianglePadPos {
     private String[][] key = {{"", "", "1", "", ""}, {"", "2", "", "4", ""}, {"5", "6", "7", "8", "9"}, {"", "A", "B", "C", ""}, {"", "", "D", "", ""}};
 
     public TrianglePadPos() {
+        // we start at the number 5
         this.x = 0;
         this.y = 2;
     }
@@ -80,6 +81,7 @@ class TrianglePadPos {
         int newX = x;
         int newY = y;
 
+        // moves us to the new spot, making sure we don't leave the array bounds
         switch (direction) {
             case 'L':
                 if (x - 1 >= 0) --newX;
@@ -95,8 +97,9 @@ class TrianglePadPos {
                 break;
         }
 
-        if (key[newY][newX].isEmpty()) return;
+        if (key[newY][newX].isEmpty()) return;  // if we would move to an unreachable spot, don't move there
 
+        // move ot the reachable spot
         x = newX;
         y = newY;
     }
@@ -116,6 +119,7 @@ class KeyPadPos {
     }
 
     void move(char direction) {
+        // moves us to the new spot, making sure we don't leave the bounds
         switch (direction) {
             case 'L':
                 if (x - 1 >= -1) --x;
