@@ -3,6 +3,6 @@ package com.chasehaddleton.adventofcode.y2016;
 public class Main {
 
     public static void main(String[] args) {
-        new dayFour().solveQ2();
+        new dayFour().solveQ1();
     }
 }

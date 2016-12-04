@@ -14,7 +14,7 @@ public class dayFour {
 
     public void solveQ1() {
         try (Scanner sc = new Scanner(new FileInputStream("/Users/chasehaddleton/Documents/Programming/Advent of Code 2016/src/com/chasehaddleton/adventofcode/y2016/dayFour.in"))) {
-            readInput1(sc);
+            readInput(sc);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -24,7 +24,7 @@ public class dayFour {
 
     public void solveQ2() {
         try (Scanner sc = new Scanner(new FileInputStream("/Users/chasehaddleton/Documents/Programming/Advent of Code 2016/src/com/chasehaddleton/adventofcode/y2016/dayFour.in"))) {
-            readInput2(sc);
+            readInput(sc);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -32,15 +32,7 @@ public class dayFour {
         System.out.println(output2());
     }
 
-    private void readInput1(Scanner sc) {
-        while (sc.hasNextLine()) {
-            String line = sc.nextLine().trim(); // Split the input into an array of the numbers
-
-            input.add(new Room(line)); // Create the new triangle
-        }
-    }
-
-    private void readInput2(Scanner sc) {
+    private void readInput(Scanner sc) {
         while (sc.hasNextLine()) {
             String line = sc.nextLine().trim(); // Split the input into an array of the numbers
 
@@ -138,13 +130,13 @@ class Room {
 
                 })
                 .map(Map.Entry::getKey) // get each key
-                .collect(Collectors.toList()); // collect into a list
+                // since the keys are the right order for the checksum, we can just grab as many as we need
+                .collect(Collectors.toList()).subList(0, checksum.length());
 
         StringBuilder out = new StringBuilder();
 
-        // since the keys are the right order for the checksum, we can just grab as many as we need
-        for (int i = 0; i < checksum.length(); i++) {
-            out.append(keys.get(i));
+        for (Character cur : keys) {
+            out.append(cur);
         }
 
         return out.toString().equals(checksum);
