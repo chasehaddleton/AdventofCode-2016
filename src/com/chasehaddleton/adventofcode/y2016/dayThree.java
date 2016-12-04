@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class dayThree extends AdventOfCode {
     private ArrayList<Triangle> input = new ArrayList<>();
 
+    @Override
     public void solveQ1() {
         try (Scanner sc = new Scanner(new FileInputStream("/Users/chasehaddleton/Documents/Programming/Advent of Code 2016/src/com/chasehaddleton/adventofcode/y2016/in/dayThree.in"))) {
             readInput1(sc);
@@ -22,6 +23,7 @@ public class dayThree extends AdventOfCode {
         System.out.println(output1());
     }
 
+    @Override
     public void solveQ2() {
         try (Scanner sc = new Scanner(new FileInputStream("/Users/chasehaddleton/Documents/Programming/Advent of Code 2016/src/com/chasehaddleton/adventofcode/y2016/in/dayThree.in"))) {
             readInput2(sc);
