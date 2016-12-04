@@ -5,15 +5,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// dayThree.in
+// in/dayThree.in
 // 862
 // 1577
 
-public class dayThree {
+public class dayThree extends AdventOfCode {
     private ArrayList<Triangle> input = new ArrayList<>();
 
     public void solveQ1() {
-        try (Scanner sc = new Scanner(new FileInputStream("/Users/chasehaddleton/Documents/Programming/Advent of Code 2016/src/com/chasehaddleton/adventofcode/y2016/dayThree.in"))) {
+        try (Scanner sc = new Scanner(new FileInputStream("/Users/chasehaddleton/Documents/Programming/Advent of Code 2016/src/com/chasehaddleton/adventofcode/y2016/in/dayThree.in"))) {
             readInput1(sc);
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -23,7 +23,7 @@ public class dayThree {
     }
 
     public void solveQ2() {
-        try (Scanner sc = new Scanner(new FileInputStream("/Users/chasehaddleton/Documents/Programming/Advent of Code 2016/src/com/chasehaddleton/adventofcode/y2016/dayThree.in"))) {
+        try (Scanner sc = new Scanner(new FileInputStream("/Users/chasehaddleton/Documents/Programming/Advent of Code 2016/src/com/chasehaddleton/adventofcode/y2016/in/dayThree.in"))) {
             readInput2(sc);
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -55,7 +55,11 @@ public class dayThree {
         }
     }
 
-    private String output1() {
+    void readInput(Scanner sc) {
+
+    }
+
+    String output1() {
         int count = 0;
 
         for (Triangle tri : input) { // Count triangles
@@ -65,7 +69,7 @@ public class dayThree {
         return String.valueOf(count);
     }
 
-    private String output2() {
+    String output2() {
         int count = 0;
 
         for (Triangle tri : input) { // Count triangles

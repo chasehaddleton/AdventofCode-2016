@@ -1,38 +1,16 @@
 package com.chasehaddleton.adventofcode.y2016;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-// dayFour.in
+// in/dayFour.in
 // 361724
 // 482
 
-public class dayFour {
+public class dayFour extends AdventOfCode {
     private ArrayList<Room> input = new ArrayList<>();
 
-    public void solveQ1() {
-        try (Scanner sc = new Scanner(new FileInputStream("/Users/chasehaddleton/Documents/Programming/Advent of Code 2016/src/com/chasehaddleton/adventofcode/y2016/dayFour.in"))) {
-            readInput(sc);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        System.out.println(output1());
-    }
-
-    public void solveQ2() {
-        try (Scanner sc = new Scanner(new FileInputStream("/Users/chasehaddleton/Documents/Programming/Advent of Code 2016/src/com/chasehaddleton/adventofcode/y2016/dayFour.in"))) {
-            readInput(sc);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        System.out.println(output2());
-    }
-
-    private void readInput(Scanner sc) {
+    void readInput(Scanner sc) {
         while (sc.hasNextLine()) {
             String line = sc.nextLine().trim(); // Split the input into an array of the numbers
 
@@ -40,7 +18,7 @@ public class dayFour {
         }
     }
 
-    private String output1() {
+    String output1() {
         int count = 0;
 
         for (Room cur : input) { // Count triangles
@@ -50,7 +28,7 @@ public class dayFour {
         return String.valueOf(count);
     }
 
-    private String output2() {
+    String output2() {
         int count = 0;
 
         for (Room cur : input) { // Count triangles

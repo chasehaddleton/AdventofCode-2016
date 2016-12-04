@@ -1,33 +1,23 @@
 package com.chasehaddleton.adventofcode.y2016;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Scanner;
 import java.util.function.IntBinaryOperator;
 
-// R4, R3, L3, L2, L1, R1, L1, R2, R3, L5, L5, R4, L4, R2, R4, L3, R3, L3, R3, R4, R2, L1, R2, L3, L2, L1, R3, R5, L1, L4, R2, L4, R3, R1, R2, L5, R2, L189, R5, L5, R52, R3, L1, R4, R5, R1, R4, L1, L3, R2, L2, L3, R4, R3, L2, L5, R4, R5, L2, R2, L1, L3, R3, L4, R4, R5, L1, L1, R3, L5, L2, R76, R2, R2, L1, L3, R189, L3, L4, L1, L3, R5, R4, L1, R1, L1, L1, R2, L4, R2, L5, L5, L5, R2, L4, L5, R4, R4, R5, L5, R3, L1, L3, L1, L1, L3, L4, R5, L3, R5, R3, R3, L5, L5, R3, R4, L3, R3, R1, R3, R2, R2, L1, R1, L3, L3, L3, L1, R2, L1, R4, R4, L1, L1, R3, R3, R4, R1, L5, L2, R2, R3, R2, L3, R4, L5, R1, R4, R5, R4, L4, R1, L3, R1, R3, L2, L3, R1, L2, R3, L3, L1, L3, R4, L4, L5, R3, R5, R4, R1, L2, R3, R5, L5, L4, L1, L1
+// in/dayOne.in
 // 288
 // 111
 
-public class dayOne {
-    private Scanner sc = new Scanner(System.in);
+public class dayOne extends AdventOfCode {
     private ArrayList<String> input = new ArrayList<>();
 
-    public void solveQ1() {
-        readInput();
-        System.out.println(output1());
+    void readInput(Scanner sc) {
+        Arrays.asList(sc.nextLine().split(", ")).forEach((x) -> input.add(x));
     }
 
-    public void solveQ2() {
-        readInput();
-        System.out.println(output2().getVal());
-    }
-
-    private void readInput() {
-        List<String> inLst = Arrays.asList(sc.nextLine().split(", "));
-
-        inLst.forEach((x) -> input.add(x));
-    }
-
-    private int output1() {
+    String output1() {
         Pos pos = new Pos();
         Facing facing = new Facing(Facing.north);
 
@@ -49,10 +39,10 @@ public class dayOne {
             }
         });
 
-        return pos.getVal();
+        return String.valueOf(pos.getVal());
     }
 
-    private Pos output2() {
+    String output2() {
         Pos pos = new Pos();
         Facing facing = new Facing(Facing.north);
         HashMap<String, Integer> visited = new HashMap<>();
@@ -81,13 +71,13 @@ public class dayOne {
                 if (visited.get(pos.toString()) == null) { // check if we've visited this place before
                     count = -1; // we haven't!
                 } else {
-                    return pos;
+                    return String.valueOf(pos.getVal());
                 }
 
                 visited.put(pos.toString(), ++count); // add the visited location to the hash map
             }
         }
-        return new Pos();
+        return String.valueOf(new Pos().getVal());
     }
 }
 
