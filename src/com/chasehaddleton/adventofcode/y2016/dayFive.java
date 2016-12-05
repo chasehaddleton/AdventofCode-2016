@@ -6,12 +6,12 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-// dayFour.in
+// dayFive.in
 // d4cd2ee1
 // f2c730e5
 
 public class dayFive extends AdventOfCode {
-    String input;
+    private String input;
 
     void readInput(Scanner sc) {
         while (sc.hasNextLine()) {
@@ -20,22 +20,15 @@ public class dayFive extends AdventOfCode {
     }
 
     String output1() {
-        MessageDigest md;
-
         StringBuilder out = new StringBuilder();
 
         try {
-            md = MessageDigest.getInstance("MD5");
+            MessageDigest md = MessageDigest.getInstance("MD5");
 
             int count = -1;
             while (true) {
-                byte[] bytesOfMessage;
-
-                // Get the hash
-                bytesOfMessage = (input + Integer.toString(++count)).getBytes("UTF-8");
-
-                // Convert it to a string
-                String hash = convertByteArrayToHexString(md.digest(bytesOfMessage));
+                // Create the hash and convert it to a string
+                String hash = convertByteArrayToHexString(md.digest((input + Integer.toString(++count)).getBytes("UTF-8")));
 
                 // Check if it meets the requirements
                 if (hash.substring(0, 5).equals("00000")) {
@@ -53,24 +46,18 @@ public class dayFive extends AdventOfCode {
     }
 
     String output2() {
-        MessageDigest md;
         Character[] out = new Character[8];
-        char replaceChar = '!'
+        char replaceChar = '!';
 
         Arrays.fill(out, replaceChar);
 
         try {
-            md = MessageDigest.getInstance("MD5");
+            MessageDigest md = MessageDigest.getInstance("MD5");
 
             int count = -1, passCharCount = 0;
             while (true) {
-                byte[] bytesOfMessage;
-
-                // Get the hash
-                bytesOfMessage = (input + Integer.toString(++count)).getBytes("UTF-8");
-
-                // Convert to a string
-                String hash = convertByteArrayToHexString(md.digest(bytesOfMessage));
+                // Create the hash and convert it to a string
+                String hash = convertByteArrayToHexString(md.digest((input + Integer.toString(++count)).getBytes("UTF-8")));
 
                 // Check if it meets the requirements
                 if (hash.substring(0, 5).equals("00000") && hash.charAt(5) >= '0' && hash.charAt(5) <= '7' && out[Character.getNumericValue(hash.charAt(5))] == replaceChar) {
@@ -102,5 +89,3 @@ public class dayFive extends AdventOfCode {
         return stringBuffer.toString();
     }
 }
-
-
