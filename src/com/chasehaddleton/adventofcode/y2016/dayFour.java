@@ -65,14 +65,16 @@ class Room {
     String decryptName() {
         StringBuilder out = new StringBuilder();
 
+        // We can make our lives easier by taking the sector ID modulus 26, as any time we shift 26 + r times, where
+        // 0 < r < 26, we could have just shifted r times
+        int shift = sectorId % 26;
+
         // shift each letter, or convert to a space
         for (char ch : name.toCharArray()) {
             if (ch == '-') {
                 out.append(' ');
             } else {
-                // We can make our lives easier by taking the modulus of the sector ID, as any time we shift 26 + r
-                // times, where 0 < r < 26, we could have just shifted r times
-                char val = (char) ((int) ch + (sectorId % 26));
+                char val = (char) ((int) ch + shift);
 
                 if (val > 'z') {
                     out.append((char) ((int) val - 26)); // make sure it's still in the right range
