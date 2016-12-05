@@ -31,12 +31,17 @@ public class dayFive extends AdventOfCode {
             while (true) {
                 byte[] bytesOfMessage;
 
+                // Get the hash
                 bytesOfMessage = (input + Integer.toString(++count)).getBytes("UTF-8");
 
+                // Convert it to a string
                 String hash = convertByteArrayToHexString(md.digest(bytesOfMessage));
 
+                // Check if it meets the requirements
                 if (hash.substring(0, 5).equals("00000")) {
                     out.append(hash.charAt(5));
+
+                    // Check if the passcode is finished
                     if (out.length() == 8) break;
                 }
             }
@@ -50,29 +55,37 @@ public class dayFive extends AdventOfCode {
     String output2() {
         MessageDigest md;
         Character[] out = new Character[8];
+        char replaceChar = '!'
 
-        Arrays.fill(out, '!');
+        Arrays.fill(out, replaceChar);
 
         try {
             md = MessageDigest.getInstance("MD5");
 
-            int count = -1, i = 0;
+            int count = -1, passCharCount = 0;
             while (true) {
                 byte[] bytesOfMessage;
 
+                // Get the hash
                 bytesOfMessage = (input + Integer.toString(++count)).getBytes("UTF-8");
 
+                // Convert to a string
                 String hash = convertByteArrayToHexString(md.digest(bytesOfMessage));
 
-                if (hash.substring(0, 5).equals("00000") && hash.charAt(5) >= '0' && hash.charAt(5) <= '7' && out[Character.getNumericValue(hash.charAt(5))] == '!') {
+                // Check if it meets the requirements
+                if (hash.substring(0, 5).equals("00000") && hash.charAt(5) >= '0' && hash.charAt(5) <= '7' && out[Character.getNumericValue(hash.charAt(5))] == replaceChar) {
+                    // Assign the character to the right position
                     out[Character.getNumericValue(hash.charAt(5))] = hash.charAt(6);
-                    if (++i == 8) break;
+
+                    // Check if we've finished the passcode
+                    if (++passCharCount == 8) break;
                 }
             }
         } catch (NoSuchAlgorithmException | NullPointerException | UnsupportedEncodingException ex) {
             ex.printStackTrace();
         }
 
+        // Assemble the passcode into a string
         StringBuilder outSt = new StringBuilder();
         for (Character ch : out) {
             outSt.append(ch);
