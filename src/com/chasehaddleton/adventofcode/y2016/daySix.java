@@ -18,7 +18,6 @@ public class daySix extends AdventOfCode {
         }
     }
 
-
     String output1() {
         int[][] count = new int[8][26];
 
