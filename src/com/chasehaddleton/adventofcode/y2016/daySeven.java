@@ -8,7 +8,7 @@ import java.util.Scanner;
 // 260
 
 public class daySeven extends AdventOfCode {
-    ArrayList<IP> input = new ArrayList<>();
+    private ArrayList<IP> input = new ArrayList<>();
 
     void readInput(Scanner sc) {
         while (sc.hasNextLine()) {
