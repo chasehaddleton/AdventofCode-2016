@@ -36,7 +36,7 @@ public class dayEight extends AdventOfCode {
 }
 
 class Screen {
-    boolean[][] screen;
+    private boolean[][] screen;
 
     public Screen() {
         this.screen = new boolean[6][50];

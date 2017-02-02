@@ -50,6 +50,7 @@ public class dayOne extends AdventOfCode {
 
         for (String cur : input) { // run (almost) every command
             facing.change(cur.substring(0, 1)); // find the new direction of travel
+
             for (int i = 0; i < Integer.parseInt(cur.substring(1, cur.length())); i++) { // travel one unit each time
                 switch (facing.direction()) {
                     case Facing.north:
